@@ -1,31 +1,25 @@
-import React, {useState} from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import AuthorImage from "../../images/author_thumbnail.jpg";
 import nftImage from "../../images/nftImage.jpg";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-
-
+import axios from "axios"
 
 
 const HotCollections = () => {
-  const ItemDetails = () => {
+  const [itemDetails, setItemDetails] = useState([]);
+
   useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
-
-  const [itemDetails, setItemDetails] = useState([])
-
-  useEffect (() => {
     async function fetchItemDetails() {
-      const {data} = await axios.get (
+      const { data } = await axios.get(
         `https://us-central1-nft-cloud-functions.cloudfunctions.net/hotCollections`
-      )
-      setItemDetails(data)
+      );
+      setItemDetails(data);
     }
-    fetchItemDetails()
-  }, [])
+    fetchItemDetails();
+  }, []);
 
   const settings = {
     dots: true,
@@ -61,8 +55,6 @@ const HotCollections = () => {
       },
     ],
   };
-
- 
 
   return (
     <section id="section-collections" className="no-bottom">
@@ -105,7 +97,6 @@ const HotCollections = () => {
                   </div>
                 </div>
               </div>
-      
             ))}
           </Slider>
         </div>
