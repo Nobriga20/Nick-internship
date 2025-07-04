@@ -5,22 +5,7 @@ import AuthorImage from "../images/author_thumbnail.jpg";
 import nftImage from "../images/nftImage.jpg";
 import axios from "axios"
 
-const ItemDetails = () => {
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
 
-  const [itemDetails, setItemDetails] = useState([])
-
-  useEffect (() => {
-    async function fetchItemDetails() {
-      const {data} = await axios.get (
-        `https://us-central1-nft-cloud-functions.cloudfunctions.net/hotCollections`
-      )
-      setItemDetails(data)
-    }
-    fetchItemDetails()
-  }, [])
 
   return (
     <div id="wrapper">
