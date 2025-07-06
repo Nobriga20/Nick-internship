@@ -73,7 +73,9 @@ const HotCollections = () => {
                   <div className="nft_wrap">
                     <Link to="/item-details">
                       <img
-                        src={nftImage}
+                        src={
+                          "https://nft-place.web.app/static/media/coll-1.b8f9d867e8ed59ee7fa7.jpg"
+                        }
                         className="lazy img-fluid"
                         alt="NFT"
                       />
@@ -83,7 +85,9 @@ const HotCollections = () => {
                     <Link to="/author">
                       <img
                         className="lazy pp-coll"
-                        src={AuthorImage}
+                        src={
+                          "https://nft-place.web.app/static/media/author-1.04ee784f53cbe427d362.jpg"
+                        }
                         alt="Author"
                       />
                     </Link>
