@@ -66,46 +66,48 @@ const HotCollections = () => {
               <div className="small-border bg-color-2"></div>
             </div>
           </div>
-          <Slider {...settings}>
-            {new Array(4).fill(0).map((_, index) => (
-              <div key={index} className="px-2">
-                <div className="nft_coll">
-                  <div className="nft_wrap">
-                    <Link to="/item-details">
-                      <img
-                        src={
-                          "https://nft-place.web.app/static/media/coll-1.b8f9d867e8ed59ee7fa7.jpg"
-                        }
-                        className="lazy img-fluid"
-                        alt="NFT"
+     <Slider {...settings}>
+          {itemDetails.map((item) => (
+              <div key={item.id} className="px-2">
+                onClick={(e) => {
+                  if (isDragging) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                  }
+                }}
+              <div className="nft_coll">
+               <div className="nft_wrap">
+                <Link to={'/item-details/${item.nftId`}}>
+                  <img
+                   src={item.nftImage}
+                    className="lazy img-fluid"
+                     alt={item.title}
                       />
-                    </Link>
-                  </div>
-                  <div className="nft_coll_pp">
-                    <Link to="/author">
-                      <img
+                         </Link>
+                         </div>
+                         <div className="nft_coll_pp">
+                        <Link to={"/author/"${`item.authorId`}}>
+                         <img
                         className="lazy pp-coll"
-                        src={
-                          "https://nft-place.web.app/static/media/author-1.04ee784f53cbe427d362.jpg"
-                        }
-                        alt="Author"
-                      />
-                    </Link>
-                    <i className="fa fa-check"></i>
-                  </div>
-                  <div className="nft_coll_info">
-                    <Link to="/explore">
-                      <h4>Pinky Ocean</h4>
-                    </Link>
-                    <span>ERC-192</span>
-                  </div>
-                </div>
-              </div>
-            ))}
+                         src={item.authorImage}
+                            alt="Author"
+                            />
+                           </Link>
+                      i className="fa fa-check"></i>
+                      </div>
+                     <div className="nft_coll_info">
+                      <Link to="/explore">
+                      <h4>{item.title}</h4>
+                       </Link>
+                       <span>ERC-{item.code}</span>
+                       </div>
+                     </div>
+                     ))}
           </Slider>
         </div>
       </div>
     </section>
+
   );
 };
 
