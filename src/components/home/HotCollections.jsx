@@ -6,20 +6,32 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import axios from "axios"
+import Skeleton from "./Skeleton.jsx"
 
 
 const HotCollections = () => {
   const [itemDetails, setItemDetails] = useState([]);
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     async function fetchItemDetails() {
+      try{
       const { data } = await axios.get(
         `https://us-central1-nft-cloud-functions.cloudfunctions.net/hotCollections`
       );
       setItemDetails(data);
+    } catch (error) {
+      console.error{"Error fetching data:", error}
+    } finally {
+      setLoading(false)
+    }
     }
     fetchItemDetails();
   }, []);
+
+  if (loading) {
+    return <Skeleton />
+  }
 
   const settings = {
     dots: true,
@@ -67,7 +79,7 @@ const HotCollections = () => {
             </div>
           </div>
      <Slider {...settings}>
-          {itemDetails.map((item) => (
+          
               <div key={item.id} className="px-2">
                 onClick={(e) => {
                   if (isDragging) {
@@ -77,7 +89,7 @@ const HotCollections = () => {
                 }}
               <div className="nft_coll">
                <div className="nft_wrap">
-                <Link to={'/item-details/${item.nftId`}}>
+                <Link to={`/item-details/${item.nftId}`}>
                   <img
                    src={item.nftImage}
                     className="lazy img-fluid"
@@ -86,14 +98,14 @@ const HotCollections = () => {
                          </Link>
                          </div>
                          <div className="nft_coll_pp">
-                        <Link to={"/author/"${`item.authorId`}}>
+                        <Link to={`/author/${item.authorId}`}>
                          <img
                         className="lazy pp-coll"
                          src={item.authorImage}
                             alt="Author"
                             />
                            </Link>
-                      i className="fa fa-check"></i>
+                      <i className="fa fa-check"></i>
                       </div>
                      <div className="nft_coll_info">
                       <Link to="/explore">
@@ -102,8 +114,10 @@ const HotCollections = () => {
                        <span>ERC-{item.code}</span>
                        </div>
                      </div>
+                     
                      ))}
           </Slider>
+          </div>
         </div>
       </div>
     </section>
