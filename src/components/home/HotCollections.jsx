@@ -6,7 +6,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import axios from "axios"
-import Skeleton from "./Skeleton.jsx"
+import Skeleton from "../UI/Skeleton"
 
 
 const HotCollections = () => {
@@ -21,7 +21,7 @@ const HotCollections = () => {
       );
       setItemDetails(data);
     } catch (error) {
-      console.error{"Error fetching data:", error}
+      console.error("Error fetching data:", error)
     } finally {
       setLoading(false)
     }
@@ -79,14 +79,8 @@ const HotCollections = () => {
             </div>
           </div>
      <Slider {...settings}>
-          
+           {itemDetails.map((item, index) => (
               <div key={item.id} className="px-2">
-                onClick={(e) => {
-                  if (isDragging) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                  }
-                }}
               <div className="nft_coll">
                <div className="nft_wrap">
                 <Link to={`/item-details/${item.nftId}`}>
@@ -113,13 +107,13 @@ const HotCollections = () => {
                        </Link>
                        <span>ERC-{item.code}</span>
                        </div>
+                       </div>
                      </div>
                      
                      ))}
           </Slider>
           </div>
         </div>
-      </div>
     </section>
 
   );
