@@ -80,7 +80,7 @@ const NewItems = () => {
           <Slider {...settings}>
             {itemDetails.map((item, index) => (
               <div
-                className="col-lg-3 col-md-6 col-sm-6 col-xs-12"
+                className="px-2"
                 key={item.id}
               >
                 <div className="nft__item">
