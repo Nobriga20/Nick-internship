@@ -29,8 +29,11 @@ const Timer = ({ expiryDate }) => {
   }, [expiryDate]);
 
   return (
-  {item.expiryDate && <Timer expiryDate{item.expiryDate} />}
+  <div>
+      <h1>Countdown</h1>
+      <p>{timeLeft.hours}h {timeLeft.minutes}m {timeLeft.seconds}s</p>
+    </div>
   );
 };
 
-export default Timer;
+export default TimerComponent;

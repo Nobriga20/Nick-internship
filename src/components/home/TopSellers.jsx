@@ -1,8 +1,34 @@
-import React from "react";
+
 import { Link } from "react-router-dom";
 import AuthorImage from "../../images/author_thumbnail.jpg";
+import React, { useState, useEffect } from "react";
+import Skeleton from "../UI/Skeleton";
+import axios from "axios"
 
 const TopSellers = () => {
+  const [itemDetails, setItemDetails] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function fetchitemDetails() {
+      try {
+        const { data } = await axios.get(
+          `https://us-central1-nft-cloud-functions.cloudfunctions.net/topsellers`
+        );
+        setitemDetails(data);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      } finally {
+        setLoading(false);
+      }
+    }
+    fetchitemDetails();
+  }, []);
+
+  if (loading) {
+    return <Skeleton />;
+  }
+
   return (
     <section id="section-popular" className="pb-5">
       <div className="container">
@@ -18,10 +44,10 @@ const TopSellers = () => {
               {new Array(12).fill(0).map((_, index) => (
                 <li key={index}>
                   <div className="author_list_pp">
-                    <Link to="/author">
+                    <Link to={`/author/${item.authorid}`}>
                       <img
                         className="lazy pp-author"
-                        src={AuthorImage}
+                        src={item.AuthorImage}
                         alt=""
                       />
                       <i className="fa fa-check"></i>
