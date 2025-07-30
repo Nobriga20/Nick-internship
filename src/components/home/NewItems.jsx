@@ -7,7 +7,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import axios from "axios";
-import timer from "../pages/Timer.jsx"
+import Timer from '../../pages/Timer'
 
 const NewItems = () => {
    const [itemDetails, setItemDetails] = useState([]);
