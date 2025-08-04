@@ -13,7 +13,7 @@ const TopSellers = () => {
     async function fetchitemDetails() {
       try {
         const { data } = await axios.get(
-          `https://us-central1-nft-cloud-functions.cloudfunctions.net/topsellers`
+          `https://us-central1-nft-cloud-functions.cloudfunctions.net/topSellers`
         );
         setItemDetails(data);
       } catch (error) {

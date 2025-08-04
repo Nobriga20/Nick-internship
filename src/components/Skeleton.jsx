@@ -1,7 +1,7 @@
 import React from "react"
 import "./skeletonloader.css"
 
-const skeletonLoader = () => {
+const skeleton = () => {
     return (
         <div className= "skeleton-loader">
             <div className="skeleton-title"></div>
