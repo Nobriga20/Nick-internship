@@ -1,6 +1,6 @@
 
 import { Link } from "react-router-dom";
-import AuthorImage from "../../images/author_thumbnail.jpg";
+
 import React, { useState, useEffect } from "react";
 import Skeleton from "../UI/Skeleton";
 import axios from "axios"
@@ -15,7 +15,7 @@ const TopSellers = () => {
         const { data } = await axios.get(
           `https://us-central1-nft-cloud-functions.cloudfunctions.net/topsellers`
         );
-        setitemDetails(data);
+        setItemDetails(data);
       } catch (error) {
         console.error("Error fetching data:", error);
       } finally {
@@ -41,7 +41,7 @@ const TopSellers = () => {
           </div>
           <div className="col-md-12">
             <ol className="author_list">
-              {new Array(12).fill(0).map((_, index) => (
+              {new Array(12).fill(0).map((item, index) => (
                 <li key={index}>
                   <div className="author_list_pp">
                     <Link to={`/author/${item.authorid}`}>
@@ -54,7 +54,7 @@ const TopSellers = () => {
                     </Link>
                   </div>
                   <div className="author_list_info">
-                    <Link to="/author">Monica Lucas</Link>
+                    <Link to={`/author/${item.authorname}`}>Monica Lucas</Link>
                     <span>2.1 ETH</span>
                   </div>
                 </li>

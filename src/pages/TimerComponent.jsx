@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from "react";
 
-const Timer = ({ expiryDate }) => {
+const TimerComponent = ({ expiryDate }) => {
   const [seconds, setSeconds] = useState();
   const [minutes, setMinutes] = useState();
   const [hours, setHours] = useState();
@@ -31,7 +31,7 @@ const Timer = ({ expiryDate }) => {
   return (
   <div>
       <h1>Countdown</h1>
-      <p>{timeLeft.hours}h {timeLeft.minutes}m {timeLeft.seconds}s</p>
+      <p>{hours}h {minutes}m {seconds}s</p>
     </div>
   );
 };
