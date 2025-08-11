@@ -47,14 +47,14 @@ const TopSellers = () => {
                     <Link to={`/author/${item.authorid}`}>
                       <img
                         className="lazy pp-author"
-                        src={item.AuthorImage}
+                        src={item.authorImage}
                         alt=""
                       />
                       <i className="fa fa-check"></i>
                     </Link>
                   </div>
                   <div className="author_list_info">
-                    <Link to={`/author/${item.authorname}`}>Monica Lucas</Link>
+                    <Link to={`/author/${item.authorname}`}>{item.authorName}</Link>
                     <span>{item.price}</span>
                   </div>
                 </li>
@@ -66,5 +66,7 @@ const TopSellers = () => {
     </section>
   );
 };
+
+
 
 export default TopSellers;
