@@ -1,8 +1,10 @@
 
 import { Link } from "react-router-dom";
 import React, { useState, useEffect } from "react";
+import axios from "axios"
+import skeleton from "...UI/Skeleton.jsx"
 
-const Explore = () => {
+const ExploreItems = () => {
   const [explore, setExplore] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -12,7 +14,7 @@ const Explore = () => {
         const { data } = await axios.get(
           `https://us-central1-nft-cloud-functions.cloudfunctions.net/explore`
         );
-        setitemDetails(data);
+        setExplore(data);
       } catch (error) {
         console.error("Error fetching data:", error);
       } finally {
@@ -27,7 +29,7 @@ const Explore = () => {
   }
 
 
-const ExploreItems = () => {
+
   return (
     <>
       <div>
@@ -38,7 +40,7 @@ const ExploreItems = () => {
           <option value="likes_high_to_low">Most liked</option>
         </select>
       </div>
-      {new Array(8).fill(0).map((_, index) => (
+      {new Array(8).fill(0).map((item, index) => (
         <div
           key={index}
           className="d-item col-lg-3 col-md-6 col-sm-6 col-xs-12"
