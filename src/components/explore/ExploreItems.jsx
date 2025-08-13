@@ -27,7 +27,7 @@ const Explore = () => {
   }
 
 
-const Explore = () => {
+const ExploreItems = () => {
   return (
     <>
       <div>
