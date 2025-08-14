@@ -28,8 +28,11 @@ const Timer = ({ expiryDate }) => {
   }, [expiryDate]);
 
   return (
-    <div className="de_countdown">
-      {hours}h {minutes}m {seconds}s
+    <div>
+      <h1>Countdown</h1>
+      <p>
+        {hours}h {minutes}m {seconds}s
+      </p>
     </div>
   );
 };
