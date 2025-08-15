@@ -8,9 +8,8 @@ import Timer from "../UI/Timer.jsx"
 const ExploreItems = () => {
   const [explore, setExplore] = useState([]);
   const [loading, setLoading] = useState(true);
-  // Use a state to track the number of items to show.
   const [visibleItems, setVisibleItems] = useState(8);
-  const itemsPerLoad = 4; // The number of items to load on each click
+  const itemsPerLoad = 4; 
 
   useEffect(() => {
     async function fetchExplore() {
@@ -28,19 +27,46 @@ const ExploreItems = () => {
     fetchExplore();
   }, []);
 
-  // Handler function for the "Load more" button
+ 
   const handleLoadMore = () => {
     setVisibleItems((prevVisibleItems) => prevVisibleItems + itemsPerLoad);
   };
 
  
 
-  // Check if all items are already visible to hide the button
   const allItemsShown = visibleItems >= explore.length;
 
   if (loading) {
     return <Skeleton />;
   }
+
+  async function filter-Items(filter) {
+
+if (filter === "price_low_to_high") {
+
+const { data } = await axios.get(`https://us-central1-nft-cloud-functions.cloudfunctions.net/explore?filter=price_low_to_high`);
+
+setVisibleItems(data);
+
+}
+
+if (filter === "price_high_to_low") {
+
+const { data } = await axios.get(`https://us-central1-nft-cloud-functions.cloudfunctions.net/explore?filter=price_high_to_low`);
+
+setVisibleItems(data);
+
+}
+
+if (filter === "likes_high_to_low") {
+
+const { data } = await axios.get(`https://us-central1-nft-cloud-functions.cloudfunctions.net/explore?filter=likes_high_to_low`);
+
+setVisibleItems(data);
+
+}
+
+}
 
   return (
     <>
@@ -71,7 +97,7 @@ const ExploreItems = () => {
               </Link>
             </div>
             <div > 
-              {item.expiryDate && <TimerComponent expiryDate={item.expiryDate} />}
+              {item.expiryDate && <Timer expiryDate={item.expiryDate} />}
             </div>
 
             <div className="nft__item_wrap">
@@ -114,7 +140,7 @@ const ExploreItems = () => {
         </div>
       ))}
       <div className="col-md-12 text-center">
-        {/* Conditionally render the button based on the 'allItemsShown' variable */}
+        
         {!allItemsShown && (
           <button
             onClick={handleLoadMore}
