@@ -10,6 +10,7 @@ const ExploreItems = () => {
   const [loading, setLoading] = useState(true);
   const [visibleItems, setVisibleItems] = useState(8);
   const itemsPerLoad = 4; 
+  
 
   useEffect(() => {
     async function fetchExplore() {
@@ -40,13 +41,13 @@ const ExploreItems = () => {
     return <Skeleton />;
   }
 
-  async function filter-Items(filter) {
+  async function filterItems (filter) {
 
 if (filter === "price_low_to_high") {
 
 const { data } = await axios.get(`https://us-central1-nft-cloud-functions.cloudfunctions.net/explore?filter=price_low_to_high`);
 
-setVisibleItems(data);
+setExplore(data);
 
 }
 
@@ -54,7 +55,7 @@ if (filter === "price_high_to_low") {
 
 const { data } = await axios.get(`https://us-central1-nft-cloud-functions.cloudfunctions.net/explore?filter=price_high_to_low`);
 
-setVisibleItems(data);
+setExplore(data);
 
 }
 
@@ -62,7 +63,7 @@ if (filter === "likes_high_to_low") {
 
 const { data } = await axios.get(`https://us-central1-nft-cloud-functions.cloudfunctions.net/explore?filter=likes_high_to_low`);
 
-setVisibleItems(data);
+setExplore(data);
 
 }
 
@@ -71,7 +72,7 @@ setVisibleItems(data);
   return (
     <>
       <div>
-        <select id="filter-items" defaultValue="">
+        <select id="filterItems" defaultValue="">
           <option value="">Default</option>
           <option value="price_low_to_high">Price, Low to High</option>
           <option value="price_high_to_low">Price, High to Low</option>
