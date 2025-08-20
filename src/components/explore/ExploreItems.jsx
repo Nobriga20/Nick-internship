@@ -72,7 +72,11 @@ setExplore(data);
   return (
     <>
       <div>
-        <select id="filterItems" defaultValue="">
+        <select
+          id="filterItems"
+          defaultValue=""
+          onChange={(e) => filterItems(e.target.value)}
+        >
           <option value="">Default</option>
           <option value="price_low_to_high">Price, Low to High</option>
           <option value="price_high_to_low">Price, High to Low</option>
@@ -97,7 +101,7 @@ setExplore(data);
                 <i className="fa fa-check"></i>
               </Link>
             </div>
-            <div > 
+            <div>
               {item.expiryDate && <Timer expiryDate={item.expiryDate} />}
             </div>
 
@@ -141,7 +145,6 @@ setExplore(data);
         </div>
       ))}
       <div className="col-md-12 text-center">
-        
         {!allItemsShown && (
           <button
             onClick={handleLoadMore}
