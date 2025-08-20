@@ -44,8 +44,8 @@ const AuthorItems = () => {
                   </Link>
                 </div>
                 <div className="nft__item_info">
-                  <Link to="/item-details/">
-                    <h4>Pinky Ocean</h4>
+                  <Link to={`/item-details/${item.address}`}>
+                    <h4>{item.authorName}</h4>
                   </Link>
                   <div className="nft__item_price">{item.price}</div>
                   <div className="nft__item_like">
