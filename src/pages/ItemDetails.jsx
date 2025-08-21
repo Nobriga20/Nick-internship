@@ -4,6 +4,13 @@ import { Link } from "react-router-dom";
 import AuthorImage from "../images/author_thumbnail.jpg";
 import nftImage from "../images/nftImage.jpg";
 import axios from "axios";
+import {useParams} from "react-router-dom"
+
+export default function ItemDetails () {
+  const { itemId } = useParams(); // inside component
+  // fetch/use itemId here...
+  return <div>Item: {itemId}</div>;
+}
 
 const ItemDetails = () => {
   return (
