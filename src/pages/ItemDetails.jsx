@@ -4,15 +4,21 @@ import { Link } from "react-router-dom";
 import AuthorImage from "../images/author_thumbnail.jpg";
 import nftImage from "../images/nftImage.jpg";
 import axios from "axios";
-import {useParams} from "react-router-dom"
-
-export default function ItemDetails () {
-  const { itemId } = useParams(); // inside component
-  // fetch/use itemId here...
-  return <div>Item: {itemId}</div>;
-}
+import { useParams } from "react-router-dom";
 
 const ItemDetails = () => {
+  const { itemId } = useParams();
+  async function ItemDetails() {
+    try {
+      const { data } = await axios.get(
+        `https://us-central1-nft-cloud-functions.cloudfunctions.net/authors?author73855012`
+      );
+      console.log(data);
+    } catch {
+      console.log("API has returned an error");
+    }
+  }
+
   return (
     <div id="wrapper">
       <div className="no-bottom no-top" id="content">
