@@ -1,9 +1,29 @@
-import React from "react";
+import React, {useState} from "react";
 import AuthorBanner from "../images/author_banner.jpg";
 import AuthorItems from "../components/author/AuthorItems";
 import { Link } from "react-router-dom";
 import AuthorImage from "../images/author_thumbnail.jpg";
+import axios from "axios"
 
+const nftCollection = () => {
+  const [nftCollection, setNftCollection] = useState([]);
+
+useEffect(() => {
+  async function nftCollection() {
+    try {
+      const { data } = await axios.get(
+        `https://us-central1-nft-cloud-functions.cloudfunctions.net/authors?author73855012`
+      );
+      setNftCollection(data);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    } finally {
+      setLoading(false);
+    }
+  }
+  fetchNftCollection();
+
+}, []);
 const Author = () => {
   return (
     <div id="wrapper">
@@ -64,6 +84,7 @@ const Author = () => {
       </div>
     </div>
   );
+}
 
 };
 
