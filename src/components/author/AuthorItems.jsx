@@ -6,7 +6,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios"
 import Skeleton from "../UI/Skeleton";
 
-const AuthorItems = (prop) => {
+const AuthorItems = ({authorCollections, item}) => {
   const [author, setAuthor] = useState([]);
   const [loading, setLoading] = useState(true);
    
@@ -37,7 +37,7 @@ const AuthorItems = (prop) => {
     <div className="de_tab_content">
       <div className="tab-1">
         <div className="row">
-         {author.map((item, index)  => (
+         {authorCollections.map((collection, index)  => (
             <div className="col-lg-3 col-md-6 col-sm-6 col-xs-12" key={index}>
               <div className="nft__item">
                 <div className="author_list_pp">
@@ -73,7 +73,7 @@ const AuthorItems = (prop) => {
                   </Link>
                 </div>
                 <div className="nft__item_info">
-                  <Link to={`/item-details/${item.nftCollection}`}>
+                  <Link to={`/item-details/${collection.nftCollection}`}>
                     <h4>{item.authorName}</h4>
                   </Link>
                   <div className="nft__item_price">{item.price}</div>
