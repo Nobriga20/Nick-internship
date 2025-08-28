@@ -1,51 +1,22 @@
 
+import React from "react";
 import { Link } from "react-router-dom";
-import AuthorImage from "../../images/author_thumbnail.jpg";
-import nftImage from "../../images/nftImage.jpg";
-import React, { useState, useEffect } from "react";
-import axios from "axios"
-import Skeleton from "../UI/Skeleton";
 
-const AuthorItems = ({authorCollections, item}) => {
-  const [author, setAuthor] = useState([]);
-  const [loading, setLoading] = useState(true);
-   
-  
-
-  useEffect(() => {
-    async function fetchAuthor() {
-      try {
-        const { data } = await axios.get(
-          `https://us-central1-nft-cloud-functions.cloudfunctions.net/authors?author73855012`
-        );
-        setAuthor(data);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      } finally {
-        setLoading(false);
-      }
-    }
-    fetchAuthor();
-  }, []);
-
-   if (loading) {
-     return <Skeleton />;
-   }
-
-
+const AuthorItems = ({ authorCollections, items }) => {
   return (
     <div className="de_tab_content">
       <div className="tab-1">
         <div className="row">
-         {authorCollections.map((collection, index)  => (
-            <div className="col-lg-3 col-md-6 col-sm-6 col-xs-12" key={index}>
+          {authorCollections.map((elem) => (
+            <div className="col-lg-3 col-md-6 col-sm-6 col-xs-12" key={elem.id}>
               <div className="nft__item">
                 <div className="author_list_pp">
-                  <Link to= {`author/${item.authorId}`}>
-                    <img className="lazy" src={item.authorImage} alt="" />
+                  <Link to="">
+                    <img className="lazy" src={items.authorImage} alt="" />
                     <i className="fa fa-check"></i>
                   </Link>
                 </div>
+
                 <div className="nft__item_wrap">
                   <div className="nft__item_extra">
                     <div className="nft__item_buttons">
@@ -64,22 +35,22 @@ const AuthorItems = ({authorCollections, item}) => {
                       </div>
                     </div>
                   </div>
-                  <Link to={`/item-details/${item.id}`}>
+                  <Link to={`/item-details/${elem.nftId}`}>
                     <img
-                      src={item.nftImage} alt={item.title}
+                      src={elem.nftImage}
                       className="lazy nft__item_preview"
-                    
+                      alt=""
                     />
                   </Link>
                 </div>
                 <div className="nft__item_info">
-                  <Link to={`/item-details/${collection.nftCollection}`}>
-                    <h4>{item.authorName}</h4>
+                  <Link to={`/item-details/${elem.nftId}`}>
+                    <h4>{elem.title}</h4>
                   </Link>
-                  <div className="nft__item_price">{item.price}</div>
+                  <div className="nft__item_price">{elem.price} ETH</div>
                   <div className="nft__item_like">
                     <i className="fa fa-heart"></i>
-                    <span>{item.likes}</span>
+                    <span>{elem.likes}</span>
                   </div>
                 </div>
               </div>
