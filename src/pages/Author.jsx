@@ -9,14 +9,14 @@ const Author = () => {
   const [authorCollection, setAthorCollection] = useState([]);
   const { authorId } = useParams();
 
-  const ToggleCounter = () => {
-  const [count, setCount] = useState(0);
-  const [isToggled, setIsToggled] = useState(false);
+   const [followerCount, setFollowerCount] = useState(0);
+  const [isFollowing, setIsFollowing] = useState(false);
 
-  const handleToggle = () => {
-    setIsToggled(!isToggled); 
-    setCount(count + 1);
-  } 
+  const handleFollowToggle = () => {
+    setIsFollowing(prev => !prev);
+    setFollowerCount(prev => isFollowing ? prev - 1 : prev + 1);
+  };
+
   };
 
   
@@ -30,6 +30,7 @@ const Author = () => {
     );
     setItems(data);
     setAthorCollection(data.nftCollection);
+    setFollowerCount(data.followers || 0);
   }
 
   useEffect(() => {
@@ -78,20 +79,22 @@ const Author = () => {
                   <div className="profile_follow de-flex">
                     <div className="de-flex-col">
                       <div className="profile_follower">
-                        {items?.followers} followers
+                        {followerCount} followers
                       </div>
                       <Link
-                        to={`/item-details/${count.nftId}`}
+                        to=""
                         className="btn-main follow-btn"
                       >
                         Follow
                       </Link>
-                      <div>
-                        <h1>Count: {count}</h1>
-                        <button onClick={handleToggle}>
-                          {isToggled ? "Toggled On" : "Toggled Off"}
-                        </button>
-                      </div>
+                         </div>
+                      <button
+                        className="btn-main follow-btn"
+                        onClick={handleFollowToggle}
+                      >
+                        {isFollowing ? "Unfollow" : "Follow"}
+                      </button>
+                    </div>
                     </div>
                   </div>
                 </div>
