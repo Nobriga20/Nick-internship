@@ -9,6 +9,21 @@ const Author = () => {
   const [authorCollection, setAthorCollection] = useState([]);
   const { authorId } = useParams();
 
+  const ToggleCounter = () => {
+  const [count, setCount] = useState(0);
+  const [isToggled, setIsToggled] = useState(false);
+
+  const handleToggle = () => {
+    setIsToggled(!isToggled); 
+    setCount(count + 1);
+  } 
+  };
+
+  
+
+
+  
+
   async function getData() {
     const { data } = await axios.get(
       `https://us-central1-nft-cloud-functions.cloudfunctions.net/authors?author=${authorId}`
@@ -65,9 +80,18 @@ const Author = () => {
                       <div className="profile_follower">
                         {items?.followers} followers
                       </div>
-                      <Link to="#" className="btn-main follow-btn">
+                      <Link
+                        to={`/item-details/${count.nftId}`}
+                        className="btn-main follow-btn"
+                      >
                         Follow
                       </Link>
+                      <div>
+                        <h1>Count: {count}</h1>
+                        <button onClick={handleToggle}>
+                          {isToggled ? "Toggled On" : "Toggled Off"}
+                        </button>
+                      </div>
                     </div>
                   </div>
                 </div>
