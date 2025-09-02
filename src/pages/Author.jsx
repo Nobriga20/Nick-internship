@@ -12,12 +12,13 @@ const Author = () => {
    const [followerCount, setFollowerCount] = useState(0);
   const [isFollowing, setIsFollowing] = useState(false);
 
+
   const handleFollowToggle = () => {
     setIsFollowing(prev => !prev);
     setFollowerCount(prev => isFollowing ? prev - 1 : prev + 1);
   };
 
-  };
+
 
   
 
@@ -81,21 +82,16 @@ const Author = () => {
                       <div className="profile_follower">
                         {followerCount} followers
                       </div>
-                      <Link
-                        to=""
-                        className="btn-main follow-btn"
-                      >
+                      <Link to="" className="btn-main follow-btn">
                         Follow
                       </Link>
-                         </div>
-                      <button
-                        className="btn-main follow-btn"
-                        onClick={handleFollowToggle}
-                      >
-                        {isFollowing ? "Unfollow" : "Follow"}
-                      </button>
                     </div>
-                    </div>
+                    <button
+                      className="btn-main follow-btn"
+                      onClick={handleFollowToggle}
+                    >
+                      {isFollowing ? "Unfollow" : "Follow"}
+                    </button>
                   </div>
                 </div>
               </div>
@@ -114,6 +110,5 @@ const Author = () => {
       </div>
     </div>
   );
-};
 
-export default Author;
+export default Author
