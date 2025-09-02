@@ -20,6 +20,8 @@ const Author = () => {
 
 
 
+
+
   
 
 
@@ -110,5 +112,6 @@ const Author = () => {
       </div>
     </div>
   );
+}
 
 export default Author
