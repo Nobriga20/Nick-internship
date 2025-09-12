@@ -3,6 +3,7 @@ import EthImage from "../images/ethereum.svg";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import Skeleton from "../components/UI/Skeleton";
+import { useLocation} from 'react-router-dom';
 
 const ItemDetails = () => {
   const [itemDetails, setItemDetails] = useState(null);
@@ -23,6 +24,13 @@ const ItemDetails = () => {
     }
     fetchItemDetails();
   }, []);
+
+  const itemDetails1 = () => {
+    const location = useLocation()
+    const queryParams = new URLSearchParams(location.search)
+    const nftId = queryParams.get('nftId')
+    const message = 'The NFT ID is: ${nftId}'
+  }
 
   if (loading) {
     return <Skeleton />;
