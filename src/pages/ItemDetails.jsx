@@ -3,7 +3,7 @@ import EthImage from "../images/ethereum.svg";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import Skeleton from "../components/UI/Skeleton";
-import { useLocation} from 'react-router-dom';
+import { useParams } from 'react-router-dom'
 
 const ItemDetails = () => {
   const [itemDetails, setItemDetails] = useState(null);
@@ -12,8 +12,9 @@ const ItemDetails = () => {
   useEffect(() => {
     async function fetchItemDetails() {
       try {
+        const {nftId} = useParams()
         const { data } = await axios.get(
-          `https://us-central1-nft-cloud-functions.cloudfunctions.net/itemDetails?nftId=17914494`
+          `https://us-central1-nft-cloud-functions.cloudfunctions.net/itemDetails?nftId=${nftId}`
         );
         setItemDetails(data);
       } catch (error) {
@@ -25,12 +26,6 @@ const ItemDetails = () => {
     fetchItemDetails();
   }, []);
 
-  const itemDetails1 = () => {
-    const location = useLocation()
-    const queryParams = new URLSearchParams(location.search)
-    const nftId = queryParams.get('nftId')
-    const message = 'The NFT ID is: ${nftId}'
-  }
 
   if (loading) {
     return <Skeleton />;
