@@ -1,7 +1,16 @@
-import React from "react";
+
 import { Link } from "react-router-dom";
+import AOS from "aos";
+import "aos/dist/aos.css";
+import React, {useEffect} from "react"
 
 const BrowseByCategory = () => {
+  useEffect(() => {
+    AOS.init({
+      duration: 1000, 
+    });
+  }, []); 
+
   return (
     <section id="section-category" className="no-top">
       <div className="container">
@@ -10,6 +19,7 @@ const BrowseByCategory = () => {
             <div className="text-center">
               <h2>Browse by category</h2>
               <div className="small-border bg-color-2"></div>
+              <div data-aos="fade-in"></div>
             </div>
           </div>
           <div className="col-md-2 col-sm-4 col-6 mb-sm-30">
@@ -51,7 +61,9 @@ const BrowseByCategory = () => {
         </div>
       </div>
     </section>
+
   );
 };
+
 
 export default BrowseByCategory;
