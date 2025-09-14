@@ -8,11 +8,11 @@ import { useParams } from 'react-router-dom'
 const ItemDetails = () => {
   const [itemDetails, setItemDetails] = useState(null);
   const [loading, setLoading] = useState(true);
+  const { nftId } = useParams();
 
   useEffect(() => {
     async function fetchItemDetails() {
       try {
-        const {nftId} = useParams()
         const { data } = await axios.get(
           `https://us-central1-nft-cloud-functions.cloudfunctions.net/itemDetails?nftId=${nftId}`
         );
