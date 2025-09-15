@@ -19,7 +19,7 @@ const BrowseByCategory = () => {
             <div className="text-center">
               <h2>Browse by category</h2>
               <div className="small-border bg-color-2"></div>
-              <div data-aos="fade-in"></div>
+              
             </div>
           </div>
           <div className="col-md-2 col-sm-4 col-6 mb-sm-30">

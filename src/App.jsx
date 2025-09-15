@@ -5,8 +5,15 @@ import Author from "./pages/Author";
 import ItemDetails from "./pages/ItemDetails";
 import Nav from "./components/Nav";
 import Footer from "./components/Footer";
+import "aos/dist/aos.css";
+import AOS from "aos";
 
 function App() {
+  useEffect(() => {
+    AOS.init({ duration: 1000 }); // 1000ms = 1s
+    AOS.refresh(); // Call this if you dynamically change the DOM
+  }, []);
+
   return (
     <Router>
       <Nav />
