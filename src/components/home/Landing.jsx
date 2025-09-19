@@ -1,17 +1,23 @@
+  
 
-import NFT from "../../images/nft.png";
+
+
+
 import backgroundImage from "../../images/bg-shape-1.jpg";
 import { Link } from "react-router-dom";
 import "aos/dist/aos.css";
 import React, { useEffect } from "react";
 
-const Landing = () => {
-  useEffect(() => {
+
+import Aos from "aos";
+import 'aos/dist/aos.css';
+
+const Landing = () => }
+  useEffect(() => 
     Aos.init({
       duration: 1000,
-    });
-  }, []);
-
+    }));
+\
   return (
     <section
       id="section-hero"
@@ -51,7 +57,9 @@ const Landing = () => {
         </div>
       </div>
     </section>
+  
   );
 };
+
 
 export default Landing;

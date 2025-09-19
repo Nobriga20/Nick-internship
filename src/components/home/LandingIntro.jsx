@@ -1,12 +1,12 @@
 import React from "react";
 
 const LandingIntro = () => {
+useEffect((wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww))
   return (
     <section id="section-intro" className="no-top no-bottom">
-      <div data-aos="fade-in">
       <div className="container">
         <div className="row">
-          <div className="col-lg-4 col-md-6 mb-sm-30">
+          <div className="col-lg-4 col-md-6 mb-sm-30" data-aos="fade-in">
             <div className="feature-box f-boxed style-3">
               <i className="bg-color-2 i-boxed icon_wallet"></i>
               <div className="text">
@@ -43,7 +43,6 @@ const LandingIntro = () => {
                 </p>
               </div>
               <i className="wm icon_tags_alt"></i>
-            </div>
           </div>
         </div>
       </div>
