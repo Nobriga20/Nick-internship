@@ -7,7 +7,7 @@ import backgroundImage from "../../images/bg-shape-1.jpg";
 import { Link } from "react-router-dom";
 import "aos/dist/aos.css";
 import React, { useEffect } from "react";
-import NFT from "../../images.nft.png"
+import NFT from "../../images/nft.png"
 
 
 import Aos from "aos";

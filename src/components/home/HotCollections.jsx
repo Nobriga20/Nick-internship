@@ -7,7 +7,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import axios from "axios"
 import Skeleton from "../UI/Skeleton"
-import 
+
 
 
 
@@ -80,9 +80,11 @@ const HotCollections = () => {
               <div className="small-border bg-color-2"></div>
             </div>
           </div>
+          <>
      <Slider {...settings}>
+              
            {itemDetails.map((item, index) => (
-            div data-aos="fade-in"></div>
+            
               <div key={item.id} className="px-2">
               <div className="nft_coll">
                <div className="nft_wrap">
@@ -113,12 +115,15 @@ const HotCollections = () => {
                        </div>
                      </div>
                      
-                     ))}
+                     
+           ))}
           </Slider>
+        </>
           </div>
         </div>
     </section>
-
+    
+           
   );
            }
 
