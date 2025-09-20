@@ -7,6 +7,8 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import axios from "axios"
 import Skeleton from "../UI/Skeleton"
+import 
+
 
 
 const HotCollections = () => {
@@ -15,16 +17,16 @@ const HotCollections = () => {
 
   useEffect(() => {
     async function fetchItemDetails() {
-      try{
-      const { data } = await axios.get(
-        `https://us-central1-nft-cloud-functions.cloudfunctions.net/hotCollections`
-      );
-      setItemDetails(data);
-    } catch (error) {
-      console.error("Error fetching data:", error)
-    } finally {
-      setLoading(false)
-    }
+      try {
+        const { data } = await axios.get(
+          `https://us-central1-nft-cloud-functions.cloudfunctions.net/hotCollections`
+        );
+        setItemDetails(data);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      } finally {
+        setLoading(false);
+      }
     }
     fetchItemDetails();
   }, []);
@@ -80,6 +82,7 @@ const HotCollections = () => {
           </div>
      <Slider {...settings}>
            {itemDetails.map((item, index) => (
+            div data-aos="fade-in"></div>
               <div key={item.id} className="px-2">
               <div className="nft_coll">
                <div className="nft_wrap">
@@ -117,6 +120,6 @@ const HotCollections = () => {
     </section>
 
   );
-};
+           }
 
 export default HotCollections;

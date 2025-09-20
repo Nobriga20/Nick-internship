@@ -7,17 +7,18 @@ import backgroundImage from "../../images/bg-shape-1.jpg";
 import { Link } from "react-router-dom";
 import "aos/dist/aos.css";
 import React, { useEffect } from "react";
+import NFT from "../../images.nft.png"
 
 
 import Aos from "aos";
 import 'aos/dist/aos.css';
 
-const Landing = () => }
+const Landing = () => {
   useEffect(() => 
     Aos.init({
       duration: 1000,
     }));
-\
+
   return (
     <section
       id="section-hero"
@@ -26,7 +27,7 @@ const Landing = () => }
       data-bgimage="url(images/bg-shape-1.jpg) bottom"
       style={{ background: `url(${backgroundImage}) bottom / cover` }}
     >
-      <div data-aos="fade-in"></div>
+
       <div className="v-center">
         <div className="container">
           <div className="row align-items-center">
@@ -50,7 +51,7 @@ const Landing = () => }
               </Link>
               <div className="mb-sm-30"></div>
             </div>
-            <div className="col-md-6 xs-hide">
+            <div className="col-md-6 xs-hide" data-aos="fade-in">
               <img src={NFT} className="lazy img-fluid" alt="" />
             </div>
           </div>
