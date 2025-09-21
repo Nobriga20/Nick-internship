@@ -70,7 +70,7 @@ const NewItems = () => {
 
   return (
     <section id="section-items" className="no-bottom">
-      <div className="container">
+      <div className="container" data-aos="fade-in">
         <div className="row">
           <div className="col-lg-12">
             <div className="text-center">
@@ -80,10 +80,7 @@ const NewItems = () => {
           </div>
           <Slider {...settings}>
             {itemDetails.map((item, index) => (
-              <div
-                className="px-2"
-                key={item.id}
-              >
+              <div className="px-2" key={item.id}>
                 <div className="nft__item">
                   <div className="author_list_pp">
                     <Link
@@ -128,7 +125,7 @@ const NewItems = () => {
                   <div className="nft__item_info">
                     <Link to={`/item-details/${item.price}`}>
                       <h4>{item.title}</h4>
-                    </Link >
+                    </Link>
                     <div className="nft__item_price">{item.price}</div>
                     <div className="nft__item_like">
                       <i className="fa fa-heart"></i>

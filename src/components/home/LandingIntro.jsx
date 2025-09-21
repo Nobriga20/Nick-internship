@@ -15,7 +15,7 @@ const LandingIntro = () => {
                   accusantium doloremque laudantium, totam rem.
                 </p>
               </div>
-              <i className="wm icon_wallet"></i>
+              <i className="wm icon_wallet" data-aos="fade-in"></i>
             </div>
           </div>
           <div className="col-lg-4 col-md-6 mb-sm-30">
@@ -42,9 +42,9 @@ const LandingIntro = () => {
                 </p>
               </div>
               <i className="wm icon_tags_alt"></i>
+            </div>
           </div>
         </div>
-      </div>
       </div>
     </section>
   );
