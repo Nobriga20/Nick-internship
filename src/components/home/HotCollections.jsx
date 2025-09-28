@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import AuthorImage from "../../images/author_thumbnail.jpg";
 import nftImage from "../../images/nftImage.jpg";
@@ -70,7 +71,7 @@ const HotCollections = () => {
 
   return (
     <section id="section-collections" className="no-bottom">
-      <div className="container">
+      <div className="container" data-aos="fade-in">
         <div className="row">
           <div className="col-lg-12">
             <div className="text-center">
@@ -117,6 +118,6 @@ const HotCollections = () => {
     </section>
 
   );
-};
+           }
 
 export default HotCollections;

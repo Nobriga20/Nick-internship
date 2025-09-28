@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import AuthorImage from "../../images/author_thumbnail.jpg";
 import nftImage from "../../images/nftImage.jpg";
@@ -68,9 +69,67 @@ const NewItems = () => {
      ],
    };
 
+   const [itemDetails, setItemDetails] = useState([]);
+   const [loading, setLoading] = useState(true);
+
+   useEffect(() => {
+     async function fetchItemDetails() {
+       try {
+         const { data } = await axios.get(
+           `https://us-central1-nft-cloud-functions.cloudfunctions.net/newItems`
+         );
+         setItemDetails(data);
+       } catch (error) {
+         console.error("Error fetching data:", error);
+       } finally {
+         setLoading(false);
+       }
+     }
+     fetchItemDetails();
+   }, []);
+
+   if (loading) {
+     return <Skeleton />;
+   }
+
+   const settings = {
+     dots: true,
+     infinite: true,
+     speed: 500,
+     slidesToShow: 4,
+     slidesToScroll: 1,
+     responsive: [
+       {
+         breakpoint: 1024,
+         settings: {
+           slidesToShow: 3,
+           slidesToScroll: 1,
+           infinite: true,
+           dots: true,
+         },
+       },
+       {
+         breakpoint: 768,
+         settings: {
+           slidesToShow: 2,
+           slidesToScroll: 1,
+           dots: true,
+         },
+       },
+       {
+         breakpoint: 480,
+         settings: {
+           slidesToShow: 1,
+           slidesToScroll: 1,
+           dots: true,
+         },
+       },
+     ],
+   };
+
   return (
     <section id="section-items" className="no-bottom">
-      <div className="container">
+      <div className="container" data-aos="fade-in">
         <div className="row">
           <div className="col-lg-12">
             <div className="text-center">
@@ -80,10 +139,7 @@ const NewItems = () => {
           </div>
           <Slider {...settings}>
             {itemDetails.map((item, index) => (
-              <div
-                className="px-2"
-                key={item.id}
-              >
+              <div className="px-2" key={item.id}>
                 <div className="nft__item">
                   <div className="author_list_pp">
                     <Link
@@ -128,7 +184,7 @@ const NewItems = () => {
                   <div className="nft__item_info">
                     <Link to={`/item-details/${item.price}`}>
                       <h4>{item.title}</h4>
-                    </Link >
+                    </Link>
                     <div className="nft__item_price">{item.price}</div>
                     <div className="nft__item_like">
                       <i className="fa fa-heart"></i>
