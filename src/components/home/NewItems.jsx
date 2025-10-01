@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import AuthorImage from "../../images/author_thumbnail.jpg";
@@ -69,8 +69,7 @@ const NewItems = () => {
      ],
    };
 
-   const [itemDetails, setItemDetails] = useState([]);
-   const [loading, setLoading] = useState(true);
+
 
    useEffect(() => {
      async function fetchItemDetails() {
