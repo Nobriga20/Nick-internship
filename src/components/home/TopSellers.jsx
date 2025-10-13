@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 import React, { useState, useEffect } from "react";
 import Skeleton from "../UI/Skeleton";
-import axios from "axios"
+import axios from "axios" 
 
 
 
