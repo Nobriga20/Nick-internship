@@ -34,27 +34,6 @@ const NewItems = () => {
      return <Skeleton />;
    }
 
-   
-   useEffect(() => {
-     async function fetchItemDetails() {
-       try {
-         const { data } = await axios.get(
-           `https://us-central1-nft-cloud-functions.cloudfunctions.net/newItems`
-         );
-         setItemDetails(data);
-       } catch (error) {
-         console.error("Error fetching data:", error);
-       } finally {
-         setLoading(false);
-       }
-     }
-     fetchItemDetails();
-   }, []);
-
-   if (loading) {
-     return <Skeleton />;
-   }
-
    const settings = {
      dots: true,
      infinite: true,
