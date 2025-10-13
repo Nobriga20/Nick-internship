@@ -1,11 +1,39 @@
 
+
 import { Link } from "react-router-dom";
 
 import React, { useState, useEffect } from "react";
 import Skeleton from "../UI/Skeleton";
 import axios from "axios"
 
+import React, { useState, useEffect } from "react";
+import Skeleton from "../UI/Skeleton";
+import axios from "axios"
+
 const TopSellers = () => {
+  const [itemDetails, setItemDetails] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function fetchitemDetails() {
+      try {
+        const { data } = await axios.get(
+          `https://us-central1-nft-cloud-functions.cloudfunctions.net/topSellers`
+        );
+        setItemDetails(data);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      } finally {
+        setLoading(false);
+      }
+    }
+    fetchitemDetails();
+  }, []);
+
+  if (loading) {
+    return <Skeleton />;
+  }
+
   const [itemDetails, setItemDetails] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -42,11 +70,13 @@ const TopSellers = () => {
           <div className="col-md-12">
             <ol className="author_list">
               {itemDetails.map((item, index) => (
+              {itemDetails.map((item, index) => (
                 <li key={index}>
                   <div className="author_list_pp">
-                    <Link to={`/author/${item.authorid}`}>
+                    <Link to={`/author/${item.authorId}`}>
                       <img
                         className="lazy pp-author"
+                        src={item.authorImage}
                         src={item.authorImage}
                         alt=""
                       />
@@ -54,7 +84,7 @@ const TopSellers = () => {
                     </Link>
                   </div>
                   <div className="author_list_info">
-                    <Link to={`/author/${item.authorname}`}>{item.authorName}</Link>
+                    <Link to={`/author/${item.authorId}`}>{item.authorName}</Link>
                     <span>{item.price}</span>
                   </div>
                 </li>
