@@ -14,28 +14,7 @@ const NewItems = () => {
    const [itemDetails, setItemDetails] = useState([]);
    const [loading, setLoading] = useState(true);
 
-   useEffect(() => {
-     async function fetchItemDetails() {
-       try {
-         const { data } = await axios.get(
-           `https://us-central1-nft-cloud-functions.cloudfunctions.net/newItems`
-         );
-         setItemDetails(data);
-       } catch (error) {
-         console.error("Error fetching data:", error);
-       } finally {
-         setLoading(false);
-       }
-     }
-     fetchItemDetails();
-   }, []);
-
-   if (loading) {
-     return <Skeleton />;
-   }
-
-  
-
+   
 
 
    useEffect(() => {
