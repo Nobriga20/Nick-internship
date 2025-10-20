@@ -31,29 +31,7 @@ const TopSellers = () => {
     return <Skeleton />;
   }
 
-  const [itemDetails, setItemDetails] = useState([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    async function fetchitemDetails() {
-      try {
-        const { data } = await axios.get(
-          `https://us-central1-nft-cloud-functions.cloudfunctions.net/topSellers`
-        );
-        setItemDetails(data);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      } finally {
-        setLoading(false);
-      }
-    }
-    fetchitemDetails();
-  }, []);
-
-  if (loading) {
-    return <Skeleton />;
-  }
-
+  
   return (
     <section id="section-popular" className="pb-5">
       <div className="container">
