@@ -45,14 +45,14 @@ const TopSellers = () => {
           <div className="col-md-12">
             <ol className="author_list">
               {itemDetails.map((item, index) => (
-              {itemDetails.map((item, index) => (
+              
                 <li key={index}>
                   <div className="author_list_pp">
                     <Link to={`/author/${item.authorId}`}>
                       <img
                         className="lazy pp-author"
                         src={item.authorImage}
-                        src={item.authorImage}
+                       
                         alt=""
                       />
                       <i className="fa fa-check"></i>
