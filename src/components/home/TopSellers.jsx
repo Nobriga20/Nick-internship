@@ -6,9 +6,6 @@ import React, { useState, useEffect } from "react";
 import Skeleton from "../UI/Skeleton";
 import axios from "axios"
 
-import React, { useState, useEffect } from "react";
-import Skeleton from "../UI/Skeleton";
-import axios from "axios"
 
 const TopSellers = () => {
   const [itemDetails, setItemDetails] = useState([]);
