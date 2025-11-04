@@ -8,7 +8,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import axios from "axios";
-import Timer from '../../pages/TimerComponent'
+import Timer from '../UI/Timer'
 
 const NewItems = () => {
    const [itemDetails, setItemDetails] = useState([]);
@@ -97,7 +97,7 @@ const NewItems = () => {
                       <i className="fa fa-check"></i>
                     </Link>
                   </div>
-                  <div className="de_countdown">{Timer.expiryDate}</div>
+                  { item.expiryDate&&<Timer expiryDate={item.expiryDate}/>}
 
                   <div className="nft__item_wrap">
                     <div className="nft__item_extra">
